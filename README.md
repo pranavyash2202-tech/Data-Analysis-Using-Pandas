@@ -1,51 +1,57 @@
 # 📊 Data Analysis using Pandas
 
-🚀 **Internship Project | Alfido Tech**
+## 📌 Internship Task 2 – Alfido Tech
 
-This project demonstrates practical data analysis using Python’s Pandas library. It focuses on transforming raw CSV data into meaningful insights through cleaning, filtering, and aggregation techniques.
-
----
-
-## 📌 Project Overview
-
-In real-world datasets, missing and inconsistent data is common.  
-This project simulates such a scenario and applies data preprocessing techniques to ensure accurate analysis.
-
-The workflow includes:
-- Data loading
-- Data cleaning
-- Data filtering
-- Data grouping & aggregation
-- Insight generation
+This project was developed as part of the **Python Developer Internship at Alfido Tech**.  
+The objective of this task is to demonstrate data analysis skills using the Pandas library.
 
 ---
 
-## 🎯 Key Objectives
-
-- Analyze structured data using Pandas  
-- Handle missing and inconsistent values  
-- Apply filtering to extract relevant records  
-- Perform grouping and aggregation  
-- Derive simple, meaningful insights  
+## 🎯 Objectives
+- Load and inspect a CSV dataset  
+- Handle missing or incorrect data  
+- Apply filtering, grouping, and aggregation  
+- Extract meaningful insights  
 
 ---
 
-## 🛠️ Tech Stack
+## 📁 Dataset
+The dataset (`data.csv`) contains the following columns:
+- Name  
+- Age  
+- City  
 
-- **Python**
-- **Pandas**
+Some values are missing and handled during data cleaning.
+
+---
+
+## 🛠️ Technologies Used
+- Python  
+- Pandas  
 
 ---
 
-## 📁 Dataset Description
+## 💻 Code Implementation
 
-The dataset (`data.csv`) contains:
+```python
+import pandas as pd
 
-| Column | Description |
-|------|------------|
-| Name | Person's Name |
-| Age | Age (may contain missing values) |
-| City | City name (may contain missing values) |
+# Load dataset
+df = pd.read_csv("data.csv")
 
----
+# Display original data
+print(df)
+
+# Handle missing values
+df["Age"].fillna(df["Age"].mean(), inplace=True)
+df["City"].fillna("Unknown", inplace=True)
+
+# Filter data
+filtered = df[df["Age"] > 22]
+
+# Group data
+grouped = df.groupby("City")["Age"].mean()
+
+print(filtered)
+print(grouped)
 
